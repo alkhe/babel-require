@@ -1,0 +1,23 @@
+import fs from 'fs'
+import path from 'path'
+var babel = require('babel')
+
+// https://github.com/joyent/node/blob/master/lib/module.js
+// http://stackoverflow.com/questions/17581830/load-node-js-module-from-string-in-memory
+
+export default function es6require(modulePath) {
+  modulePath = path.resolve(modulePath)
+  if (fs.existsSync(modulePath)) {
+    let code = babel.transformFileSync(modulePath).code
+    let pathModule = new module.constructor()
+
+    let localModulesPath = path.join(process.cwd(), 'node_modules')
+
+    if ((pathModule.paths || []).indexOf(localModulesPath) == -1) {
+      pathModule.paths = [localModulesPath].concat(pathModule.paths)
+    }
+
+    pathModule._compile(code, modulePath)
+    return pathModule.exports
+  }
+}
