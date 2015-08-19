@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-var babel = require('babel')
+import babel from 'babel'
 
 // https://github.com/joyent/node/blob/master/lib/module.js
 // http://stackoverflow.com/questions/17581830/load-node-js-module-from-string-in-memory

@@ -1,6 +1,6 @@
 {
   "name": "es6require",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Require ES6 modules into ES5 modules.",
   "main": "dist/main.js",
   "scripts": {
