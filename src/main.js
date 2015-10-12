@@ -21,3 +21,12 @@ export default function es6require(modulePath, babelOptions) {
     return pathModule.exports
   }
 }
+
+// TODO:
+
+// if (typeof(content) === 'object' && typeof(content['default']) === 'function') {
+//   description = content['description']
+//   args = content['args'] || ''
+//   alias = content['alias']
+//   content = content['default']
+// }

@@ -12,5 +12,5 @@ test('require module with ES6 class', t => {
   let TestClass = es6require(path.join(process.cwd(), 'test', 'test-class.js'))
   let testObj = new TestClass()
   t.equal(testObj.hello(), 'hello')
-  t.end()  
+  t.end()
 })
