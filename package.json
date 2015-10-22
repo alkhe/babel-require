@@ -1,6 +1,6 @@
 {
-  "name": "es6require",
-  "version": "0.0.6",
+  "name": "babel-require",
+  "version": "1.0.0",
   "description": "Require ES6 modules into ES5 modules.",
   "main": "dist/main.js",
   "scripts": {
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:webnuts/es6require.git"
+    "url": "git@github.com:webnuts/babel-require.git"
   },
   "author": "jacob@webnuts.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/webnuts/es6require/issues"
+    "url": "https://github.com/webnuts/babel-require/issues"
   },
-  "homepage": "https://github.com/webnuts/es6require",
+  "homepage": "https://github.com/webnuts/babel-require",
   "dependencies": {
     "babel": "^5.8.23"
   },
