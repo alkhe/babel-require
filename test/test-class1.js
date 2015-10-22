@@ -1,4 +1,4 @@
-export default class TestClass {
+export default class TestClass1 {
   hello() {
     return 'hello'
   }

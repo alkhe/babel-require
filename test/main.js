@@ -8,9 +8,17 @@ test('non-existing module path', t => {
   t.end()
 })
 
-test('require module with ES6 class', t => {
-  let TestClass = es6require(path.join(process.cwd(), 'test', 'test-class.js'))
+test('require module with ES6 class 1', t => {
+  let TestClass = es6require(path.join(process.cwd(), 'test', 'test-class1.js'))
   let testObj = new TestClass()
   t.equal(testObj.hello(), 'hello')
+  t.end()
+})
+
+test('require module with ES6 class 2', t => {
+  let {default: TestClass, text} = es6require(path.join(process.cwd(), 'test', 'test-class2.js'))
+  let testObj = new TestClass()
+  t.equal(testObj.hello(), 'hello')
+  t.equal(text, 'world')
   t.end()
 })
