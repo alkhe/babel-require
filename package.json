@@ -1,6 +1,6 @@
 {
   "name": "babel-require",
-  "version": "1.0.1",
+  "version": "6.6.5",
   "description": "Require ES6 modules into ES5 modules.",
   "main": "dist/main.js",
   "scripts": {
