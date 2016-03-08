@@ -1,23 +1,24 @@
-import fs from 'fs'
+import { existsSync as exists } from 'fs'
 import path from 'path'
-let babel = require('babel')
+import { transformFileSync as transform } from 'babel-core';
 
-// https://github.com/joyent/node/blob/master/lib/module.js
-// http://stackoverflow.com/questions/17581830/load-node-js-module-from-string-in-memory
+export default (query, babelOptions) => {
+	query = path.resolve(query);
+	if (exists(query)) {
+		let { code } = transform(query, babelOptions);
+		let m = new module.constructor()
 
-export default function es6require(modulePath, babelOptions) {
-  modulePath = path.resolve(modulePath)
-  if (fs.existsSync(modulePath)) {
-    let code = babel.transformFileSync(modulePath, babelOptions).code
-    let pathModule = new module.constructor()
+		let nodeModules = path.join(process.cwd(), 'node_modules');
 
-    let localModulesPath = path.join(process.cwd(), 'node_modules')
+		if (!m.paths) {
+			m.paths = [];
+		}
 
-    if ((pathModule.paths || []).indexOf(localModulesPath) == -1) {
-      pathModule.paths = [localModulesPath].concat(pathModule.paths)
-    }
+		if (m.paths.indexOf(nodeModules) < 0) {
+			m.paths.push(nodeModules);
+		}
 
-    pathModule._compile(code, modulePath)
-    return pathModule.exports
-  }
+		m._compile(code, query);
+		return m.exports;
+	}
 }

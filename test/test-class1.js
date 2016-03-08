@@ -1,5 +1,5 @@
 export default class TestClass1 {
-  hello() {
-    return 'hello'
-  }
+	hello() {
+		return 'hello'
+	}
 }
